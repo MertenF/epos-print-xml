@@ -1,6 +1,7 @@
 # py-epos-print-xml
-Python library to communicate with Epson thermal printers via ePos-Print XML
-This makes it easy and intuitive to create print orders for ePos-print xml 
+Python library to communicate with Epson thermal printers via ePos-Print XML.
+This makes it easy and intuitive to create print orders for ePos-Print XML compatible printers, like the Epson TM-T20, TM-m30 and TM-m50 series.
+Depending on the printer model, some elements are not supported. Check you manual or the [Epson reference](https://reference.epson-biz.com/modules/ref_epos_print_xml_en/index.php?vid=ref_epos_print_xml_en_devicespecifications_supportedelementslist) to see which elements are supported.
 
 This is still in active development, don't expect everything to work.
 
