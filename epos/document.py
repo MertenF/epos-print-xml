@@ -39,4 +39,3 @@ def _to_xml(base_tag: str, element_list: list[Type[BaseElement], ...]) -> ET.Ele
     for element in element_list:
         root.append(element.to_xml())
     return root
-

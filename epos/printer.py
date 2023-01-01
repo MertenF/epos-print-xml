@@ -64,24 +64,3 @@ def _add_soap_enveloppe(body: str, header: str = '') -> str:
     soap.append('</s:Envelope>')
 
     return ''.join(soap)
-
-
-def main():
-    printer = Printer('10.0.0.12')
-    print(printer.try_connection())
-
-    doc = EposDocument()
-    doc.add_body(Text(
-        'Dit is een test voor ene lange lijn text ************** ZEEEERRRR LANGE LIJN TEXT hmmm zonder een enter in\n'))
-    t = Text('Inverteren?')
-    t.reverse = True
-    doc.add_body(t)
-    doc.add_body(Feed(2))
-    doc.add_body(Barcode(BarcodeType.CODE39, 'BARCODE'))
-
-    doc.add_body(Cut())
-    printer.print(doc)
-
-
-if __name__ == '__main__':
-    main()

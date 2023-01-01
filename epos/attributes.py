@@ -155,7 +155,3 @@ class ColorAtt:
         if color not in Color:
             raise ValueError('Unknonw color')
         self._color = color
-
-
-
-

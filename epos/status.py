@@ -1,5 +1,6 @@
 def parse_code(asb: int) -> [str]:
     msg = []
+
     if asb & 0x00000001:
         msg.append('No printer response')
     if asb & 0x00000002:
@@ -40,9 +41,3 @@ def parse_code(asb: int) -> [str]:
         msg.append('Spooler stopped')
 
     return msg
-
-
-if __name__ == '__main__':
-    print(parse_code(0))
-    print(parse_code(252641308))
-    print(parse_code(251658268))
