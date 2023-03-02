@@ -302,8 +302,8 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
 class Feed(BaseElement, LineSpcAtt):
     def __init__(
             self,
-            unit: int = None,
             line: int = None,
+            unit: int = None,
             linespc: int = None
     ):
         super().__init__(
