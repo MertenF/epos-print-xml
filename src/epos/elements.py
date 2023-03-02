@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from typing import List
 
 from . import status
 from .attributes import AlignAtt, ColorAtt, WidthAtt, HeightAtt, FontAtt, RotateAtt, LineSpcAtt
@@ -77,7 +78,7 @@ class Response(BaseElement):
         self.attr['status'] = str(self.status)
         self.attr['battery'] = str(self.battery)
 
-    def get_status(self) -> list[str]:
+    def get_status(self) -> List[str]:
         return status.parse_code(self.status)
 
 
