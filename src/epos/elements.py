@@ -465,11 +465,11 @@ class Barcode(BaseElement, AlignAtt, WidthAtt, HeightAtt, FontAtt, RotateAtt):
 
     def _load_attrs(self):
         self.attr['type'] = self.type.value
-        self.attr['hri'] = self.hri.value
-        self.attr['font'] = self.font.value
+        self.attr['hri'] = self.hri.value if self.hri else None
+        self.attr['font'] = self.font.value if self.font else None
         self.attr['width'] = self.width
         self.attr['height'] = self.height
-        self.attr['align'] = self.align.value
+        self.attr['align'] = self.align.value if self.align else None
         self.attr['rotate'] = self.rotate
 
     @property
@@ -495,10 +495,10 @@ class Barcode(BaseElement, AlignAtt, WidthAtt, HeightAtt, FontAtt, RotateAtt):
     def hri(self, hri: HRI):
         try:
             hri = HRI(hri)
-        except TypeError:
+        except ValueError:
             pass
 
-        if hri not in HRI:
+        if hri is not None and hri not in HRI:
             raise ValueError('The HRI is invalid') from None
         self._hri = hri
 
