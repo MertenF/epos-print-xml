@@ -27,8 +27,12 @@ class EposDocument:
     def parameters_to_str(self) -> str:
         return ET.tostring(self.parameters_to_xml(), encoding='unicode', short_empty_elements=False)
 
-    def body_to_str(self) -> str:
-        return ET.tostring(self.body_to_xml(), encoding='unicode').replace(' />', '/>')
+    def body_to_str(self, url_encode_newlines=False) -> str:
+        s = ET.tostring(self.body_to_xml(), encoding='unicode')
+        s = s.replace(' />', '/>')
+        if url_encode_newlines:
+            s = s.replace('\n', '&#10;')
+        return s
 
 
 def _to_xml(base_tag: str, element_list: list[Type[BaseElement], ...]) -> ET.Element:
