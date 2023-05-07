@@ -1,11 +1,12 @@
 import xml.etree.ElementTree as ET
 from typing import List
+from dataclasses import dataclass
 
 from . import status
 from .attributes import AlignAtt, ColorAtt, WidthAtt, HeightAtt, FontAtt, RotateAtt, LineSpcAtt
 from .constants import Color, Align, Mode, BarcodeType, HRI, Font, CutType, Lang
 
-
+@dataclass
 class BaseElement:
     """
     Base class for all ePOS-Print XML elements
@@ -24,6 +25,9 @@ class BaseElement:
             's': 'http://schemas.xmlsoap.org/soap/envelope/',
             'epos-print': 'http://www.epson-pos.com/schemas/2011/03/epos-print',
         }
+
+    def __repr__(self):
+        return f'{self.tag.upper()}: {repr(self.text)} {self.attr}'
 
     def to_xml(self):
         """
