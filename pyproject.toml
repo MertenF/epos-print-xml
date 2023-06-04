@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "ePos-Print-XML"
+version = "0.1"
+dependencies = [
+  'requests',
+]
+authors = [
+  { name="Merten Fermont" },
+]
+description = "Library to communicate with Epson thermal printers via ePOS-Print XML protocol"
+keywords = ["epos", "thermoprinter", "voucher printer", "printing", "receipt"]
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Office/Business :: Financial :: Point-Of-Sale"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/MertenF/epos-print-xml"
+"Bug Tracker" = "https://github.com/MertenF/epos-print-xml/issues"
