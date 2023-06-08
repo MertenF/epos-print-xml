@@ -169,7 +169,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
             self._smooth = False
         else:
             self._smooth = smooth
-    
+
     @property
     def double_width(self) -> bool:
         return self._double_width
@@ -190,7 +190,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
     @dw.setter
     def dw(self, dw):
         self.double_width = dw
-    
+
     @property
     def double_height(self) -> bool:
         return self._double_height
@@ -211,7 +211,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
     @dh.setter
     def dh(self, dh):
         self.double_height = dh
-    
+
     @property
     def reverse(self) -> bool:
         return self._reverse
@@ -237,15 +237,15 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
             self._underline = False
         else:
             self._underline = underline
-    
+
     @property
     def ul(self):
         return self.underline
-    
+
     @ul.setter
     def ul(self, ul):
         self.underline = ul
-    
+
     @property
     def bold(self) -> bool:
         return self._bold
@@ -266,7 +266,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
     @em.setter
     def em(self, em):
         self.bold = em
-    
+
     @property
     def x(self) -> int:
         return self._x
@@ -277,7 +277,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
             x = int(x)
         except TypeError:
             pass
-        
+
         if x is not None and (x < 0 or x > 576):
             raise ValueError('"x" must be between 0 and 576 inclusive') from None
         self._x = x
@@ -406,11 +406,11 @@ class Logo(BaseElement, AlignAtt):
         self.attr['key1'] = str(self.key1)
         self.attr['key2'] = str(self.key2)
         self.attr['align'] = self.align
-    
+
     @property
     def key1(self) -> int:
         return self._key1
-    
+
     @key1.setter
     def key1(self, key1: int):
         try:
@@ -569,7 +569,7 @@ class Cut(BaseElement):
 
     def _load_attrs(self):
         self.attr['type'] = self.type
-        
+
     @property
     def type(self) -> CutType:
         return self._type
