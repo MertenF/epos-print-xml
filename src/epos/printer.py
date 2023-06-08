@@ -37,8 +37,6 @@ class Printer:
         }
         params = {'devid': self.devid, 'timeout': self.timeout}
 
-        print(data)
-
         response = requests.post(
             url,
             data=_add_soap_enveloppe(data),
