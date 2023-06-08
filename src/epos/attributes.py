@@ -87,8 +87,7 @@ class FontAtt:
             pass
 
         if font is not None and font not in Font:
-            raise ValueError(
-                f'"font" must be valid.')
+            raise ValueError('"font" must be valid.')
         self._font = font
 
 

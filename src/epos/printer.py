@@ -1,8 +1,7 @@
 import requests
 
-from .constants import BarcodeType
 from .document import EposDocument
-from .elements import Text, Feed, Cut, Barcode
+from .elements import Cut
 
 
 class Printer:
@@ -49,9 +48,8 @@ class Printer:
 
 def _add_soap_enveloppe(body: str, header: str = '') -> str:
     """Add the soap enveloppe, header and body"""
-    soap = []
+    soap = ['<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">']
 
-    soap.append('<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">')
     if header:
         soap.append('<s:Header>')
         soap.append(header)

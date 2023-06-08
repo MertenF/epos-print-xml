@@ -6,6 +6,7 @@ from . import status
 from .attributes import AlignAtt, ColorAtt, WidthAtt, HeightAtt, FontAtt, RotateAtt, LineSpcAtt
 from .constants import Color, Align, Mode, BarcodeType, HRI, Font, CutType, Lang
 
+
 @dataclass
 class BaseElement:
     """
@@ -43,12 +44,6 @@ class BaseElement:
 
     def to_str(self):
         return ET.tostring(self.to_xml(), encoding='utf-8', )
-
-    def from_xml(self, xml: str):
-        """
-        Loads xml data
-        """
-        dom = ET.fromstring(xml)
 
     def _add_ns(self, tag: str) -> str:
         r = f'{{{self.namespaces["a"]}}}{tag}'
