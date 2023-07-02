@@ -81,10 +81,9 @@ class Response(BaseElement):
     def _load_attrs(self):
         self.attr['xmlns'] = self.namespaces['epos-print']
         self.attr['success'] = str(self.success).lower()
-        if self.code:
-            self.attr['code'] = self.code
-        self.attr['status'] = str(self.status)
-        self.attr['battery'] = str(self.battery)
+        self.attr['code'] = self.code
+        self.attr['status'] = self.status
+        self.attr['battery'] = self.battery
 
     def status_msg(self) -> List[str]:
         return status.parse_code(self.status)
