@@ -5,6 +5,11 @@ Depending on the printer model, some elements are not supported. Check your manu
 
 This is still in active development, don't expect everything to work.
 
+## Instaling
+```
+pip install ePos-Print-XML
+```
+
 ## Example
 
 ```python
