@@ -41,7 +41,14 @@ doc.add_body(Barcode(BarcodeType.CODE39, 'text in barcode'))
 
 # Send the whole document to the printer
 # This will automatially send a Cut at the end of the document body
-printer.print(doc) 
+r = printer.print(doc)
+
+# The print method returns a response element
+# Here we can check if the printing was succesfull
+if r.success:
+    print('The printing was successfull!')
+else:
+    print(f'Printing failed. Error: {r.code}')
 ```
 
 
