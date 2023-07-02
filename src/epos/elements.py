@@ -61,13 +61,22 @@ class Response(BaseElement):
     Reference:
     https://reference.epson-biz.com/modules/ref_epos_print_xml_en/index.php?vid=ref_epos_print_xml_en_xmlforcontrollingprinter_response
     """
-    def __init__(self, success=True):
+    def __init__(
+            self,
+            success: bool = True,
+            code: str = '',
+            status: int = 0,
+            battery: int = 0,
+    ):
         super().__init__('response')
 
         self.success = success
-        self.code = ''
-        self.status = 0
-        self.battery = 0
+        self.code = code
+        self.status = status
+        self.battery = battery
+
+    def __repr__(self):
+        return f'Success: {self.success}, Code: {repr(self.code)}, Status: {self.status}, Battery: {self.battery}'
 
     def _load_attrs(self):
         self.attr['xmlns'] = self.namespaces['epos-print']
@@ -77,7 +86,7 @@ class Response(BaseElement):
         self.attr['status'] = str(self.status)
         self.attr['battery'] = str(self.battery)
 
-    def get_status(self) -> List[str]:
+    def status_msg(self) -> List[str]:
         return status.parse_code(self.status)
 
 
