@@ -12,10 +12,10 @@ class EposDocument:
     parameters: list = field(default_factory=list)
     body: list[Type[BaseElement]] = field(default_factory=list)
 
-    def add_parameter(self, element: Generic[B]):
+    def add_parameter(self, element: Generic[B]) -> None:
         self.parameters.append(element)
 
-    def add_body(self, element: Generic[B]):
+    def add_body(self, element: Generic[B]) -> None:
         self.body.append(element)
 
     def parameters_to_xml(self) -> ET.Element:
@@ -35,7 +35,7 @@ class EposDocument:
         return s
 
 
-def _to_xml(base_tag: str, element_list: list[Type[BaseElement], ...]) -> ET.Element:
+def _to_xml(base_tag: str, element_list: list[Type[B], ...]) -> ET.Element:
     root = ET.Element(
         base_tag,
         xmlns='http://www.epson-pos.com/schemas/2011/03/epos-print',

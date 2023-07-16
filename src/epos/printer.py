@@ -5,7 +5,6 @@ import requests
 from .document import EposDocument
 from .elements import Cut, Response
 
-
 namespaces = {
     's': 'http://schemas.xmlsoap.org/soap/envelope/',
     'epos-print': 'http://www.epson-pos.com/schemas/2011/03/epos-print',
@@ -29,7 +28,7 @@ class Printer:
         self.job_timeout = job_timeout
         self.url = url
 
-    def printer_ready(self):
+    def printer_ready(self) -> bool:
         """
         Send empty page to check the status
 
@@ -40,7 +39,7 @@ class Printer:
         response = self.print_empty()
         return response.success
 
-    def print_empty(self):
+    def print_empty(self) -> Response:
         """
         Send an empty document to the printer.
         Used to gather status information
@@ -51,7 +50,7 @@ class Printer:
         response = self.print(doc, autocut=False)
         return response
 
-    def print(self, doc: EposDocument, autocut=True) -> Response:
+    def print(self, doc: EposDocument, autocut: bool = True) -> Response:
         if autocut:
             doc.add_body(Cut())
         r = self._send_printjob(doc.body_to_str())
@@ -83,7 +82,7 @@ class Printer:
 
         return response
 
-    def _send_printjob(self, data):
+    def _send_printjob(self, data: str) -> str:
         prefix = 'https://' if self.use_https else 'http://'
         url = prefix + self.ip + self.url
         headers = {

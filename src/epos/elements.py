@@ -259,7 +259,7 @@ class Text(BaseElement, FontAtt, WidthAtt, HeightAtt, AlignAtt, LineSpcAtt, Rota
         return self._bold
 
     @bold.setter
-    def bold(self, bold: bool|str):
+    def bold(self, bold: bool | str):
         if bold == 'true':
             self._bold = True
         elif bold == 'false':
