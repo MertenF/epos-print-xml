@@ -34,8 +34,12 @@ class Printer:
         r = self._send_printjob(doc.body_to_str())
 
         response = Response(success=False)
+        try:
+            xml_dom = ET.fromstring(r)
+        except ET.ParseError:
+            response.code = 'PARSING_ERROR'
+            return response
 
-        xml_dom = ET.fromstring(r)
         body = xml_dom.find('./s:Body', namespaces)
         if not body:
             response.code = 'NO_BODY_FOUND'
