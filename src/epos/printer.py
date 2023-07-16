@@ -12,13 +12,14 @@ namespaces = {
 }
 
 class Printer:
-    def __init__(self, ip):
+    def __init__(self, ip, request_timeout=3):
         self.ip = ip
+        self.request_timeout = request_timeout
 
         # Defaults, normally not changed
         self.use_https = False
         self.devid = 'local_printer'
-        self.timeout = 5000
+        self.job_timeout = 5000
         self.url = '/cgi-bin/epos/service.cgi'
 
     def try_connection(self):
@@ -63,13 +64,14 @@ class Printer:
             'If-Modified-Since': 'Thu, 01 Jan 1970 00:00:00 GMT',
             'SOAPAction': '""',
         }
-        params = {'devid': self.devid, 'timeout': self.timeout}
+        params = {'devid': self.devid, 'timeout': self.job_timeout}
 
         response = requests.post(
             url,
             data=_add_soap_enveloppe(data),
             headers=headers,
             params=params,
+            timeout=self.request_timeout,
         )
 
         return response.text
