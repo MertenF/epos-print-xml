@@ -22,11 +22,27 @@ class Printer:
         self.job_timeout = 5000
         self.url = '/cgi-bin/epos/service.cgi'
 
-    def try_connection(self):
-        """Send empty page to check the status"""
+    def printer_ready(self):
+        """
+        Send empty page to check the status
+
+        Returns true if online, false if offline.
+
+        :return Boolean
+        """
+        response = self.print_empty()
+        return response.success
+
+    def print_empty(self):
+        """
+        Send an empty document to the printer.
+        Used to gather status information
+
+        :return: Response
+        """
         doc = EposDocument()
-        resp = self.print(doc, autocut=False)
-        return resp.success
+        response = self.print(doc, autocut=False)
+        return response
 
     def print(self, doc: EposDocument, autocut=True) -> Response:
         if autocut:

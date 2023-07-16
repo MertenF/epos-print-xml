@@ -21,7 +21,7 @@ from epos.constants import Align
 # Create a new printer object with 10.0.0.12 as ip
 printer = Printer('10.0.0.12')
 # Check if we can connect to the printer with no errors, otherwise exit
-if not printer.try_connection():
+if not printer.printer_ready():
     exit()
 
 # Create a new EposDocument object
@@ -30,7 +30,7 @@ doc = EposDocument()
 
 # Add an element directly to the body of the document
 doc.add_body(Text('This is example text!\n'))
-doc.add_body(Feed()) # Another way to add a newline
+doc.add_body(Feed())  # Another way to add a newline
 
 # It's also possible to first create the text object and then change the properties
 t = Text('Some special text :O\n')
