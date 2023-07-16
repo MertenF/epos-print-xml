@@ -11,16 +11,23 @@ namespaces = {
     'epos-print': 'http://www.epson-pos.com/schemas/2011/03/epos-print',
 }
 
+
 class Printer:
-    def __init__(self, ip, request_timeout=3):
+    def __init__(
+            self,
+            ip: str,
+            request_timeout: int = 3,
+            use_https: bool = False,
+            devid: str = 'local_printer',
+            job_timeout: int = 5000,
+            url: str = '/cgi-bin/epos/service.cgi',
+    ):
         self.ip = ip
         self.request_timeout = request_timeout
-
-        # Defaults, normally not changed
-        self.use_https = False
-        self.devid = 'local_printer'
-        self.job_timeout = 5000
-        self.url = '/cgi-bin/epos/service.cgi'
+        self.use_https = use_https
+        self.devid = devid
+        self.job_timeout = job_timeout
+        self.url = url
 
     def printer_ready(self):
         """
